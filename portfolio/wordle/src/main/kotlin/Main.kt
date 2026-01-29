@@ -15,7 +15,7 @@ fun main() {
         val guess = obtainGuess(trial)
 
         if(isValid(guess)){
-            val result = evaluateGuess(guess, TheWord)
+            val result = evaluateGuess(guess, theWord)
 
             displayGuess(guess, result )
             var sum = 0
@@ -41,6 +41,6 @@ fun main() {
 
         }
 
-        println(" You didn't get the wordle. This was the wordle : $TheWord , you lost!")
+        println(" You didn't get the wordle. This was the wordle : $theWord , you lost!")
 
 }
