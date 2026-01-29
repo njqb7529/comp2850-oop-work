@@ -1,11 +1,8 @@
 fun main() {
-    val possible = readWordList("data/words.txt")
+    val possible = readWordList("/workspaces/comp2850-oop-work/portfolio/wordle/data/words.txt")
 
-    if(possible.size == 0){
-        println("Word list given is empty")
-        return
-    }
-
+    if(possible.size != 0){
+        
     val theWord = pickRandomWord(possible)
 
     var trial = 1
@@ -30,17 +27,18 @@ fun main() {
                 return
             }
 
-            trial++
-
-
-
-
+           
         }
         else {
             println("Give a valid guess of 5 characters")
-
         }
 
-        println(" You didn't get the wordle. This was the wordle : $theWord , you lost!")
+     trial++
+}
 
+  println(" You didn't get the wordle. This was the wordle : $theWord , you lost!")
+}
+else{
+    println("Word list given is empty")
+}
 }
