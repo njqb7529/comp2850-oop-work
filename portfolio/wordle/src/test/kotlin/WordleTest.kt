@@ -27,8 +27,6 @@ class WordleTest : StringSpec({
     }
 
 
-
-
     "checks if random word picker actually picks a word in the list"{
         var words = mutableListOf("spanish", "french", "italian", "german", "polish", "russian")
         var originalsize= words.size
@@ -37,6 +35,35 @@ class WordleTest : StringSpec({
         var contains = theword in copy
         contains shouldBe true
         words.size shouldBe originalsize - 1 
+    }
+
+    "checks what random word picker contains if list is empty " {
+        var words = mutableListOf("")
+        var copy = words.toList()
+        var theword= pickRandomWord(words)
+        var contains = theword in copy
+        contains shouldBe true
+    }
+    
+    "checks evaluate guess when the attempt is the same as the word picked"{
+        var target = "thing"
+        var guess = "thing"
+        var compare = evaluateGuess(guess , target)
+        compare shouldBe listOf(1,1,1,1,1)
+    }
+
+    "checks evaluate guess when the attempt contains the some of the same letters but is not same as the word picked"{
+        var target= "sleep"
+        var guess = "steal"
+        var compare = evaluateGuess(guess , target)
+        compare shouldBe listOf(1,0,1,0,0)
+    }
+
+    "checks evaluate guess when the attempt contains none of the same letters as the word picked"{
+        var target= "happy"
+        var guess = "solid"
+        var compare = evaluateGuess(guess , target)
+        compare shouldBe listOf(0,0,0,0,0)
     }
 
 
