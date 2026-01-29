@@ -4,5 +4,22 @@ import io.kotest.matchers.shouldBe
 
 @Suppress("unused")
 class WordleTest : StringSpec({
-    // Write your tests here
+    "checks if word entered is valid meaning it equals to 5 characters"{
+        isValid("six") shouldBe false
+        isValid("five") shouldBe false
+        isValid("seven") shouldBe true
+    }
+
+    "checks what is returned if an empty text file is entered"{
+        var words = File("wordfile.txt")
+        words.writeText("")
+        readWordList("wordfile.txt") shouldBe mutableListOf()
+
+    }
+
+    "checks if it actually creates a list of strings"{
+        var words = File("wordfile.txt")
+        words.writeText("")
+    }
+
 })
